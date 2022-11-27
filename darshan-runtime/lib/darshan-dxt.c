@@ -955,6 +955,30 @@ static void dxt_mpiio_cleanup()
     return;
 }
 
+void dxt_enable()
+{
+    DXT_LOCK();
+    if(dxt_posix_runtime) {
+        dxt_posix_runtime->frozen = 0;    
+    }
+    if(dxt_mpiio_runtime) {
+        dxt_mpiio_runtime->frozen = 0;    
+    }
+    DXT_UNLOCK();
+}
+
+void dxt_disable()
+{
+    DXT_LOCK();
+    if(dxt_posix_runtime) {
+        dxt_posix_runtime->frozen = 1;    
+    }
+    if(dxt_mpiio_runtime) {
+        dxt_mpiio_runtime->frozen = 1;    
+    }
+    DXT_UNLOCK();
+}
+
 /*
  * Local variables:
  *  c-indent-level: 4

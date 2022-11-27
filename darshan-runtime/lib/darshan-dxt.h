@@ -72,4 +72,7 @@ void dxt_mpiio_read(darshan_record_id rec_id, int64_t offset,
 
 void dxt_posix_apply_trace_filter(struct dxt_trigger *trigger);
 
+void dxt_enable();
+void dxt_disable();
+
 #endif /* __DARSHAN_DXT_H */
